@@ -847,6 +847,8 @@ export type Database = {
           expires_at: string
           id: string
           kind: string
+          latitude: number | null
+          longitude: number | null
           media_mime: string | null
           media_path: string | null
           updated_at: string
@@ -859,6 +861,8 @@ export type Database = {
           expires_at?: string
           id?: string
           kind?: string
+          latitude?: number | null
+          longitude?: number | null
           media_mime?: string | null
           media_path?: string | null
           updated_at?: string
@@ -871,6 +875,8 @@ export type Database = {
           expires_at?: string
           id?: string
           kind?: string
+          latitude?: number | null
+          longitude?: number | null
           media_mime?: string | null
           media_path?: string | null
           updated_at?: string
@@ -887,6 +893,8 @@ export type Database = {
           id: string
           is_public: boolean
           kind: string
+          latitude: number | null
+          longitude: number | null
           media_mime: string | null
           media_path: string
           skill_tag: string | null
@@ -903,6 +911,8 @@ export type Database = {
           id?: string
           is_public?: boolean
           kind?: string
+          latitude?: number | null
+          longitude?: number | null
           media_mime?: string | null
           media_path: string
           skill_tag?: string | null
@@ -919,6 +929,8 @@ export type Database = {
           id?: string
           is_public?: boolean
           kind?: string
+          latitude?: number | null
+          longitude?: number | null
           media_mime?: string | null
           media_path?: string
           skill_tag?: string | null
