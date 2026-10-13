@@ -10,33 +10,222 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as DonorsRouteImport } from './routes/donors'
+import { Route as JobsRouteImport } from './routes/jobs'
+import { Route as LiveStudioRouteImport } from './routes/live-studio'
+import { Route as MediaStudioRouteImport } from './routes/media-studio'
+import { Route as ReelsRouteImport } from './routes/reels'
+import { Route as TrainingRouteImport } from './routes/training'
+import { Route as AuthenticatedCertificatesRouteImport } from './routes/_authenticated/certificates'
+import { Route as AuthenticatedChatRouteImport } from './routes/_authenticated/chat'
+import { Route as AuthenticatedControlRoomRouteImport } from './routes/_authenticated/control-room'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedStatusRouteImport } from './routes/_authenticated/status'
+import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
+import { Route as TrainingModuleIdRouteImport } from './routes/training.$moduleId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonorsRoute = DonorsRouteImport.update({
+  id: '/donors',
+  path: '/donors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveStudioRoute = LiveStudioRouteImport.update({
+  id: '/live-studio',
+  path: '/live-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaStudioRoute = MediaStudioRouteImport.update({
+  id: '/media-studio',
+  path: '/media-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReelsRoute = ReelsRouteImport.update({
+  id: '/reels',
+  path: '/reels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrainingRoute = TrainingRouteImport.update({
+  id: '/training',
+  path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedCertificatesRoute =
+  AuthenticatedCertificatesRouteImport.update({
+    id: '/certificates',
+    path: '/certificates',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedChatRoute = AuthenticatedChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedControlRoomRoute =
+  AuthenticatedControlRoomRouteImport.update({
+    id: '/control-room',
+    path: '/control-room',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedStatusRoute = AuthenticatedStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const JobsJobIdRoute = JobsJobIdRouteImport.update({
+  id: '/$jobId',
+  path: '/$jobId',
+  getParentRoute: () => JobsRoute,
+} as any)
+const TrainingModuleIdRoute = TrainingModuleIdRouteImport.update({
+  id: '/$moduleId',
+  path: '/$moduleId',
+  getParentRoute: () => TrainingRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/donors': typeof DonorsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/live-studio': typeof LiveStudioRoute
+  '/media-studio': typeof MediaStudioRoute
+  '/reels': typeof ReelsRoute
+  '/training': typeof TrainingRouteWithChildren
+  '/certificates': typeof AuthenticatedCertificatesRoute
+  '/chat': typeof AuthenticatedChatRoute
+  '/control-room': typeof AuthenticatedControlRoomRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/status': typeof AuthenticatedStatusRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
+  '/training/$moduleId': typeof TrainingModuleIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/donors': typeof DonorsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/live-studio': typeof LiveStudioRoute
+  '/media-studio': typeof MediaStudioRoute
+  '/reels': typeof ReelsRoute
+  '/training': typeof TrainingRouteWithChildren
+  '/certificates': typeof AuthenticatedCertificatesRoute
+  '/chat': typeof AuthenticatedChatRoute
+  '/control-room': typeof AuthenticatedControlRoomRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/status': typeof AuthenticatedStatusRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
+  '/training/$moduleId': typeof TrainingModuleIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/donors': typeof DonorsRoute
+  '/jobs': typeof JobsRouteWithChildren
+  '/live-studio': typeof LiveStudioRoute
+  '/media-studio': typeof MediaStudioRoute
+  '/reels': typeof ReelsRoute
+  '/training': typeof TrainingRouteWithChildren
+  '/_authenticated/certificates': typeof AuthenticatedCertificatesRoute
+  '/_authenticated/chat': typeof AuthenticatedChatRoute
+  '/_authenticated/control-room': typeof AuthenticatedControlRoomRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/status': typeof AuthenticatedStatusRoute
+  '/jobs/$jobId': typeof JobsJobIdRoute
+  '/training/$moduleId': typeof TrainingModuleIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/donors'
+    | '/jobs'
+    | '/live-studio'
+    | '/media-studio'
+    | '/reels'
+    | '/training'
+    | '/certificates'
+    | '/chat'
+    | '/control-room'
+    | '/profile'
+    | '/status'
+    | '/jobs/$jobId'
+    | '/training/$moduleId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/donors'
+    | '/jobs'
+    | '/live-studio'
+    | '/media-studio'
+    | '/reels'
+    | '/training'
+    | '/certificates'
+    | '/chat'
+    | '/control-room'
+    | '/profile'
+    | '/status'
+    | '/jobs/$jobId'
+    | '/training/$moduleId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/donors'
+    | '/jobs'
+    | '/live-studio'
+    | '/media-studio'
+    | '/reels'
+    | '/training'
+    | '/_authenticated/certificates'
+    | '/_authenticated/chat'
+    | '/_authenticated/control-room'
+    | '/_authenticated/profile'
+    | '/_authenticated/status'
+    | '/jobs/$jobId'
+    | '/training/$moduleId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  DonorsRoute: typeof DonorsRoute
+  JobsRoute: typeof JobsRouteWithChildren
+  LiveStudioRoute: typeof LiveStudioRoute
+  MediaStudioRoute: typeof MediaStudioRoute
+  ReelsRoute: typeof ReelsRoute
+  TrainingRoute: typeof TrainingRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +237,165 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donors': {
+      id: '/donors'
+      path: '/donors'
+      fullPath: '/donors'
+      preLoaderRoute: typeof DonorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-studio': {
+      id: '/live-studio'
+      path: '/live-studio'
+      fullPath: '/live-studio'
+      preLoaderRoute: typeof LiveStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media-studio': {
+      id: '/media-studio'
+      path: '/media-studio'
+      fullPath: '/media-studio'
+      preLoaderRoute: typeof MediaStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reels': {
+      id: '/reels'
+      path: '/reels'
+      fullPath: '/reels'
+      preLoaderRoute: typeof ReelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/training': {
+      id: '/training'
+      path: '/training'
+      fullPath: '/training'
+      preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/certificates': {
+      id: '/_authenticated/certificates'
+      path: '/certificates'
+      fullPath: '/certificates'
+      preLoaderRoute: typeof AuthenticatedCertificatesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/chat': {
+      id: '/_authenticated/chat'
+      path: '/chat'
+      fullPath: '/chat'
+      preLoaderRoute: typeof AuthenticatedChatRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/control-room': {
+      id: '/_authenticated/control-room'
+      path: '/control-room'
+      fullPath: '/control-room'
+      preLoaderRoute: typeof AuthenticatedControlRoomRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/status': {
+      id: '/_authenticated/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof AuthenticatedStatusRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/jobs/$jobId': {
+      id: '/jobs/$jobId'
+      path: '/$jobId'
+      fullPath: '/jobs/$jobId'
+      preLoaderRoute: typeof JobsJobIdRouteImport
+      parentRoute: typeof JobsRoute
+    }
+    '/training/$moduleId': {
+      id: '/training/$moduleId'
+      path: '/$moduleId'
+      fullPath: '/training/$moduleId'
+      preLoaderRoute: typeof TrainingModuleIdRouteImport
+      parentRoute: typeof TrainingRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCertificatesRoute: typeof AuthenticatedCertificatesRoute
+  AuthenticatedChatRoute: typeof AuthenticatedChatRoute
+  AuthenticatedControlRoomRoute: typeof AuthenticatedControlRoomRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedStatusRoute: typeof AuthenticatedStatusRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCertificatesRoute: AuthenticatedCertificatesRoute,
+  AuthenticatedChatRoute: AuthenticatedChatRoute,
+  AuthenticatedControlRoomRoute: AuthenticatedControlRoomRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedStatusRoute: AuthenticatedStatusRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
+interface JobsRouteChildren {
+  JobsJobIdRoute: typeof JobsJobIdRoute
+}
+
+const JobsRouteChildren: JobsRouteChildren = {
+  JobsJobIdRoute: JobsJobIdRoute,
+}
+
+const JobsRouteWithChildren = JobsRoute._addFileChildren(JobsRouteChildren)
+
+interface TrainingRouteChildren {
+  TrainingModuleIdRoute: typeof TrainingModuleIdRoute
+}
+
+const TrainingRouteChildren: TrainingRouteChildren = {
+  TrainingModuleIdRoute: TrainingModuleIdRoute,
+}
+
+const TrainingRouteWithChildren = TrainingRoute._addFileChildren(
+  TrainingRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  DonorsRoute: DonorsRoute,
+  JobsRoute: JobsRouteWithChildren,
+  LiveStudioRoute: LiveStudioRoute,
+  MediaStudioRoute: MediaStudioRoute,
+  ReelsRoute: ReelsRoute,
+  TrainingRoute: TrainingRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
