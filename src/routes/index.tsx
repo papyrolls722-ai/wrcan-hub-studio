@@ -14,6 +14,7 @@ import {
 
 import { Medallion } from "@/components/Medallion";
 import { Shell } from "@/components/Shell";
+import { UatPanel } from "@/components/UatPanel";
 import { RoseButton } from "@/components/EmpireUI";
 import { useControlAccess } from "@/hooks/useBadges";
 import { useAuth } from "@/hooks/useAuth";
@@ -85,6 +86,8 @@ function Index() {
           <Medallion key={t.label} {...t} />
         ))}
       </div>
+
+      <UatPanel />
     </Shell>
   );
 }
