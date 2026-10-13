@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logoAsset from "@/assets/wanda-logo.png.asset.json";
+import logoUrl from "@/assets/wrcan-logo.png";
 
 export function BootScreen() {
   const [hidden, setHidden] = useState(false);
@@ -27,7 +27,7 @@ export function BootScreen() {
       aria-hidden={hidden}
     >
       <img
-        src={logoAsset.url}
+        src={logoUrl}
         alt="Wanda Recruitment and Catering Agency"
         className="w-64 max-w-[70vw] animate-in fade-in zoom-in duration-1000"
       />

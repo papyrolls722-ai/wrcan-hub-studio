@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Copy, Download, Eye, Forward, Heart, Loader2, Share2, Trash2, Upload, Volume2, VolumeX } from "lucide-react";
 import { ShareSheet } from "@/components/ShareSheet";
-import logoAsset from "@/assets/wanda-logo.png.asset.json";
+import logoUrl from "@/assets/wrcan-logo.png";
 import { Shell } from "@/components/Shell";
 import { Field, Plate, RoseButton, areaClass, inputClass } from "@/components/EmpireUI";
 import { UserAvatar } from "@/components/Avatar";
@@ -384,7 +384,7 @@ function ReelCard({ reel }: { reel: Reel }) {
 
         {/* Persistent brand watermark */}
         <img
-          src={logoAsset.url}
+          src={logoUrl}
           alt=""
           aria-hidden
           className="pointer-events-none absolute top-2 right-2 h-9 w-9 rounded-full object-contain opacity-70"
@@ -393,7 +393,7 @@ function ReelCard({ reel }: { reel: Reel }) {
         {/* Wanda logo outro at the end of every reel */}
         {outro ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-background/85 backdrop-blur-sm animate-fade-in">
-            <img src={logoAsset.url} alt="Wanda" className="h-24 w-24 object-contain" />
+            <img src={logoUrl} alt="Wanda" className="h-24 w-24 object-contain" />
             <p className="rose-text font-display text-lg tracking-empire">WANDA</p>
           </div>
         ) : null}

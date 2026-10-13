@@ -2,7 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { Activity, CircleDot, Film, Home, MessageCircle, User, Briefcase } from "lucide-react";
 import type { ReactNode } from "react";
 import { useUnreadCount, useControlAccess } from "@/hooks/useBadges";
-import logoAsset from "@/assets/wanda-logo.png.asset.json";
+import logoUrl from "@/assets/wrcan-logo.png";
 
 const NAV = [
   { to: "/", label: "Empire", icon: Home },
@@ -39,7 +39,7 @@ export function Shell({
         {!bare && (
           <header className="px-5 pt-6 pb-3 text-center">
             <Link to="/" className="inline-block">
-              <img src={logoAsset.url} alt="Wanda Recruitment and Catering Agency" className="mx-auto h-20 w-auto" />
+              <img src={logoUrl} alt="Wanda Recruitment and Catering Agency" className="mx-auto h-20 w-auto" />
             </Link>
 
             {title ? (

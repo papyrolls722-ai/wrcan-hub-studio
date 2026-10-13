@@ -5,7 +5,7 @@ import {
   Coffee, Gauge, Hand, Heart, ImagePlus, Mic, MicOff, MessageSquare, MonitorUp, Pause, Play,
   Radio, Send, Sparkles, ThumbsUp, Timer, Upload, UserPlus, Users, Wifi, X, BarChart3,
 } from "lucide-react";
-import logoAsset from "@/assets/wanda-logo.png.asset.json";
+import logoUrl from "@/assets/wrcan-logo.png";
 import { Button } from "@/components/ui/button";
 import { usePresence } from "@/hooks/usePresence";
 
@@ -208,7 +208,7 @@ function LiveStudio() {
     <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-border bg-card">
       {scene === "Break" ? (
         <div className="flex h-full flex-col items-center justify-center gap-2">
-          <img src={logoAsset.url} alt="" className={small ? "h-8" : "h-20"} />
+          <img src={logoUrl} alt="" className={small ? "h-8" : "h-20"} />
           <p className={`rose-text font-display ${small ? "text-xs" : "text-2xl"}`}>We'll be right back</p>
         </div>
       ) : (
@@ -227,7 +227,7 @@ function LiveStudio() {
           ))}
         </div>
       )}
-      {!small && overlay.logo && <img src={logoAsset.url} alt="" className="absolute top-2 right-2 h-8 opacity-90" />}
+      {!small && overlay.logo && <img src={logoUrl} alt="" className="absolute top-2 right-2 h-8 opacity-90" />}
       {!small && overlay.lower && scene !== "Break" && (
         <div className="rose-metal absolute bottom-3 left-3 rounded px-3 py-1 text-xs font-semibold">{lowerName}</div>
       )}
@@ -310,7 +310,7 @@ function LiveStudio() {
           </div>
           <div className="overflow-hidden rounded-md border border-primary/40 bg-card shadow-lg">
             <div className="aspect-square bg-muted">
-              {coverUrl ? <img src={coverUrl} alt="Now playing cover art" className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center"><img src={logoAsset.url} alt="Wanda placeholder cover" className="h-20 opacity-70" /></div>}
+              {coverUrl ? <img src={coverUrl} alt="Now playing cover art" className="h-full w-full object-cover" /> : <div className="flex h-full items-center justify-center"><img src={logoUrl} alt="Wanda placeholder cover" className="h-20 opacity-70" /></div>}
             </div>
             <div className="p-3"><p className="text-[0.6rem] uppercase tracking-widest text-primary">Now playing</p><p className="mt-1 truncate font-display text-lg">{coverName}</p></div>
           </div>
@@ -325,7 +325,7 @@ function LiveStudio() {
         <header className="glass-plate flex flex-wrap items-center justify-between gap-2 rounded-xl px-3 py-2">
           <div className="flex items-center gap-2">
             <Link to="/" aria-label="Back home"><ArrowLeft className="h-5 w-5 text-primary" /></Link>
-            <img src={logoAsset.url} alt="Wanda" className="h-8" />
+            <img src={logoUrl} alt="Wanda" className="h-8" />
             <h1 className="font-display rose-text text-lg font-semibold uppercase tracking-wide">Media House Hub</h1>
           </div>
           <div className="flex items-center gap-2 text-xs">
