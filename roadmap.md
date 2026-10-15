@@ -2,3 +2,8 @@
 - [x] Add a shareable online video classroom for students.
 - [x] Link the new page from the home screen and verify it.
 - [x] Enhance Live Studio with radio, teleprompter, vlogger and producer training desks.
+- [ ] Extend live broadcasting for training sessions with honest capacity limits.
+- [ ] Add opt-in active-session tracking and geofence monitoring.
+- [ ] Add offline saved modules and draft access to the installable app.
+- [ ] Add an internal SmartStart hub and home-page button.
+- [ ] Verify new flows, permissions, and offline behavior.
