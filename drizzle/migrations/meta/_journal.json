@@ -29,6 +29,13 @@
       "when": 1791894091149,
       "tag": "0003_add_gps_columns",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792061125481,
+      "tag": "0004_hub_training_sessions",
+      "breakpoints": true
     }
   ]
 }

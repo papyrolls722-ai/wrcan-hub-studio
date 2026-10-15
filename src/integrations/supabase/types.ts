@@ -469,6 +469,83 @@ export type Database = {
           },
         ]
       }
+      hub_session_locations: {
+        Row: {
+          accuracy: number
+          latitude: number
+          longitude: number
+          session_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          accuracy: number
+          latitude: number
+          longitude: number
+          session_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          accuracy?: number
+          latitude?: number
+          longitude?: number
+          session_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hub_session_locations_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "hub_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hub_sessions: {
+        Row: {
+          closed_at: string | null
+          code: string
+          created_at: string
+          ends_at: string
+          host_id: string
+          id: string
+          latitude: number
+          longitude: number
+          radius_m: number
+          stream_url: string | null
+          title: string
+        }
+        Insert: {
+          closed_at?: string | null
+          code?: string
+          created_at?: string
+          ends_at?: string
+          host_id: string
+          id?: string
+          latitude: number
+          longitude: number
+          radius_m?: number
+          stream_url?: string | null
+          title: string
+        }
+        Update: {
+          closed_at?: string | null
+          code?: string
+          created_at?: string
+          ends_at?: string
+          host_id?: string
+          id?: string
+          latitude?: number
+          longitude?: number
+          radius_m?: number
+          stream_url?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       jobs: {
         Row: {
           category: string

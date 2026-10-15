@@ -16,12 +16,15 @@ import { Route as DonorsRouteImport } from './routes/donors'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as LiveStudioRouteImport } from './routes/live-studio'
 import { Route as MediaStudioRouteImport } from './routes/media-studio'
+import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as ReelsRouteImport } from './routes/reels'
+import { Route as SmartstartRouteImport } from './routes/smartstart'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as AuthenticatedCertificatesRouteImport } from './routes/_authenticated/certificates'
 import { Route as AuthenticatedChatRouteImport } from './routes/_authenticated/chat'
 import { Route as AuthenticatedControlRoomRouteImport } from './routes/_authenticated/control-room'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedSessionsRouteImport } from './routes/_authenticated/sessions'
 import { Route as AuthenticatedStatusRouteImport } from './routes/_authenticated/status'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as TrainingModuleIdRouteImport } from './routes/training.$moduleId'
@@ -60,9 +63,19 @@ const MediaStudioRoute = MediaStudioRouteImport.update({
   path: '/media-studio',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfflineRoute = OfflineRouteImport.update({
+  id: '/offline',
+  path: '/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReelsRoute = ReelsRouteImport.update({
   id: '/reels',
   path: '/reels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SmartstartRoute = SmartstartRouteImport.update({
+  id: '/smartstart',
+  path: '/smartstart',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrainingRoute = TrainingRouteImport.update({
@@ -92,6 +105,11 @@ const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedSessionsRoute = AuthenticatedSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedStatusRoute = AuthenticatedStatusRouteImport.update({
   id: '/status',
   path: '/status',
@@ -115,12 +133,15 @@ export interface FileRoutesByFullPath {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
+  '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
   '/certificates': typeof AuthenticatedCertificatesRoute
   '/chat': typeof AuthenticatedChatRoute
   '/control-room': typeof AuthenticatedControlRoomRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/sessions': typeof AuthenticatedSessionsRoute
   '/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
@@ -132,12 +153,15 @@ export interface FileRoutesByTo {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
+  '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
   '/certificates': typeof AuthenticatedCertificatesRoute
   '/chat': typeof AuthenticatedChatRoute
   '/control-room': typeof AuthenticatedControlRoomRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/sessions': typeof AuthenticatedSessionsRoute
   '/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
@@ -151,12 +175,15 @@ export interface FileRoutesById {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
+  '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
   '/_authenticated/certificates': typeof AuthenticatedCertificatesRoute
   '/_authenticated/chat': typeof AuthenticatedChatRoute
   '/_authenticated/control-room': typeof AuthenticatedControlRoomRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/sessions': typeof AuthenticatedSessionsRoute
   '/_authenticated/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
@@ -170,12 +197,15 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
+    | '/smartstart'
     | '/training'
     | '/certificates'
     | '/chat'
     | '/control-room'
     | '/profile'
+    | '/sessions'
     | '/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
@@ -187,12 +217,15 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
+    | '/smartstart'
     | '/training'
     | '/certificates'
     | '/chat'
     | '/control-room'
     | '/profile'
+    | '/sessions'
     | '/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
@@ -205,12 +238,15 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
+    | '/smartstart'
     | '/training'
     | '/_authenticated/certificates'
     | '/_authenticated/chat'
     | '/_authenticated/control-room'
     | '/_authenticated/profile'
+    | '/_authenticated/sessions'
     | '/_authenticated/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
@@ -224,7 +260,9 @@ export interface RootRouteChildren {
   JobsRoute: typeof JobsRouteWithChildren
   LiveStudioRoute: typeof LiveStudioRoute
   MediaStudioRoute: typeof MediaStudioRoute
+  OfflineRoute: typeof OfflineRoute
   ReelsRoute: typeof ReelsRoute
+  SmartstartRoute: typeof SmartstartRoute
   TrainingRoute: typeof TrainingRouteWithChildren
 }
 
@@ -279,11 +317,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MediaStudioRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offline': {
+      id: '/offline'
+      path: '/offline'
+      fullPath: '/offline'
+      preLoaderRoute: typeof OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reels': {
       id: '/reels'
       path: '/reels'
       fullPath: '/reels'
       preLoaderRoute: typeof ReelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/smartstart': {
+      id: '/smartstart'
+      path: '/smartstart'
+      fullPath: '/smartstart'
+      preLoaderRoute: typeof SmartstartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/training': {
@@ -321,6 +373,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/sessions': {
+      id: '/_authenticated/sessions'
+      path: '/sessions'
+      fullPath: '/sessions'
+      preLoaderRoute: typeof AuthenticatedSessionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/status': {
       id: '/_authenticated/status'
       path: '/status'
@@ -350,6 +409,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedChatRoute: typeof AuthenticatedChatRoute
   AuthenticatedControlRoomRoute: typeof AuthenticatedControlRoomRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedSessionsRoute: typeof AuthenticatedSessionsRoute
   AuthenticatedStatusRoute: typeof AuthenticatedStatusRoute
 }
 
@@ -358,6 +418,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedChatRoute: AuthenticatedChatRoute,
   AuthenticatedControlRoomRoute: AuthenticatedControlRoomRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedSessionsRoute: AuthenticatedSessionsRoute,
   AuthenticatedStatusRoute: AuthenticatedStatusRoute,
 }
 
@@ -394,7 +455,9 @@ const rootRouteChildren: RootRouteChildren = {
   JobsRoute: JobsRouteWithChildren,
   LiveStudioRoute: LiveStudioRoute,
   MediaStudioRoute: MediaStudioRoute,
+  OfflineRoute: OfflineRoute,
   ReelsRoute: ReelsRoute,
+  SmartstartRoute: SmartstartRoute,
   TrainingRoute: TrainingRouteWithChildren,
 }
 export const routeTree = rootRouteImport
