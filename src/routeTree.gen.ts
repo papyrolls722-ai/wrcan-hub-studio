@@ -16,6 +16,7 @@ import { Route as DonorsRouteImport } from './routes/donors'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as LiveStudioRouteImport } from './routes/live-studio'
 import { Route as MediaStudioRouteImport } from './routes/media-studio'
+import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as ReelsRouteImport } from './routes/reels'
 import { Route as TrainingRouteImport } from './routes/training'
 import { Route as AuthenticatedCertificatesRouteImport } from './routes/_authenticated/certificates'
@@ -58,6 +59,11 @@ const LiveStudioRoute = LiveStudioRouteImport.update({
 const MediaStudioRoute = MediaStudioRouteImport.update({
   id: '/media-studio',
   path: '/media-studio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfflineRoute = OfflineRouteImport.update({
+  id: '/offline',
+  path: '/offline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReelsRoute = ReelsRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
   '/training': typeof TrainingRouteWithChildren
   '/certificates': typeof AuthenticatedCertificatesRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
   '/training': typeof TrainingRouteWithChildren
   '/certificates': typeof AuthenticatedCertificatesRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
   '/media-studio': typeof MediaStudioRoute
+  '/offline': typeof OfflineRoute
   '/reels': typeof ReelsRoute
   '/training': typeof TrainingRouteWithChildren
   '/_authenticated/certificates': typeof AuthenticatedCertificatesRoute
@@ -170,6 +179,7 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
     | '/training'
     | '/certificates'
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
     | '/training'
     | '/certificates'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/live-studio'
     | '/media-studio'
+    | '/offline'
     | '/reels'
     | '/training'
     | '/_authenticated/certificates'
@@ -224,6 +236,7 @@ export interface RootRouteChildren {
   JobsRoute: typeof JobsRouteWithChildren
   LiveStudioRoute: typeof LiveStudioRoute
   MediaStudioRoute: typeof MediaStudioRoute
+  OfflineRoute: typeof OfflineRoute
   ReelsRoute: typeof ReelsRoute
   TrainingRoute: typeof TrainingRouteWithChildren
 }
@@ -277,6 +290,13 @@ declare module '@tanstack/react-router' {
       path: '/media-studio'
       fullPath: '/media-studio'
       preLoaderRoute: typeof MediaStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offline': {
+      id: '/offline'
+      path: '/offline'
+      fullPath: '/offline'
+      preLoaderRoute: typeof OfflineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reels': {
@@ -394,6 +414,7 @@ const rootRouteChildren: RootRouteChildren = {
   JobsRoute: JobsRouteWithChildren,
   LiveStudioRoute: LiveStudioRoute,
   MediaStudioRoute: MediaStudioRoute,
+  OfflineRoute: OfflineRoute,
   ReelsRoute: ReelsRoute,
   TrainingRoute: TrainingRouteWithChildren,
 }
