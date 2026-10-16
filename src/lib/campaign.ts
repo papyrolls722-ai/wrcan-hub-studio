@@ -25,7 +25,7 @@ export async function uploadCampaignFile(userId: string, folder: string, file: F
   if (file instanceof File && file.type.startsWith("image/")) body = await compressImage(file);
   const extension = ext ?? (file instanceof File ? file.name.split(".").pop() : "bin") ?? "bin";
   const path = `${userId}/${folder}/${crypto.randomUUID()}.${extension}`;
-  const { error } = await supabase.storage.from("campaign").upload(path, body, { contentType: body.type || undefined });
+  const { error } = await supabase.storage.from("campaign").upload(path, body, body.type ? { contentType: body.type } : {});
   if (error) throw new Error(error.message);
   return path;
 }

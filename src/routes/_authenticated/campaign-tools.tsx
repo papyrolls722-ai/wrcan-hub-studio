@@ -89,7 +89,7 @@ function Evidence({ centre }: { centre: string }) {
   });
   const start = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!before) return toast.error("Take a BEFORE photo");
+    if (!before) { toast.error("Take a BEFORE photo"); return; }
     setBusy(true);
     try {
       const [path, gps] = await Promise.all([uploadCampaignFile(uid, "evidence", before), getGps()]);
@@ -143,7 +143,7 @@ function Documents({ centre }: { centre: string }) {
     const rows = Array.from({ length: n }, (_, i) => ({ user_id: uid, centre, doc_type: docType, status, subject: n > 1 ? `${subject || "child"} #${i + 1}` : subject || "child" }));
     const { error } = await supabase.from("campaign_documents").insert(rows);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success(`${n} record${n > 1 ? "s" : ""} added to the wallet`);
     setSubject(""); setCount("1");
   };
@@ -186,8 +186,8 @@ function Visit({ centre }: { centre: string }) {
   const [key, setKey] = useState(0);
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!sig) return toast.error("The official must sign");
-    if (!photo) return toast.error("Take a photo of the official on site");
+    if (!sig) { toast.error("The official must sign"); return; }
+    if (!photo) { toast.error("Take a photo of the official on site"); return; }
     setBusy(true);
     try {
       const gps = await getGps(10000);
@@ -274,7 +274,7 @@ function Milestones({ centre }: { centre: string }) {
     const rows = MILESTONES.map((m) => ({ user_id: uid, centre, child_ref: child, milestone: m, achieved: !!checked[m] }));
     const { error } = await supabase.from("campaign_milestones").insert(rows);
     setBusy(false);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     toast.success("Milestones recorded");
     setChild(""); setChecked({});
   };
@@ -291,7 +291,7 @@ function Milestones({ centre }: { centre: string }) {
 
 function Incident({ centre }: { centre: string }) {
   const uid = useUid();
-  const [category, setCategory] = useState(INCIDENT_TYPES[0]);
+  const [category, setCategory] = useState<string>(INCIDENT_TYPES[0]!);
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);

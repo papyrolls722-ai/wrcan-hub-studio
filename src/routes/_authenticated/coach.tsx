@@ -43,7 +43,7 @@ function CoachPage() {
 
   const setStatus = async (id: string, status: string) => {
     const { error } = await supabase.from("campaign_incidents").update({ status }).eq("id", id);
-    if (error) return toast.error(error.message);
+    if (error) { toast.error(error.message); return; }
     void qc.invalidateQueries({ queryKey: ["coach-incidents"] });
   };
   const markHeard = async (id: string) => {
