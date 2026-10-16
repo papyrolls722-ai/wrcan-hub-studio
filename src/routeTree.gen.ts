@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CampaignRouteImport } from './routes/campaign'
 import { Route as DonorsRouteImport } from './routes/donors'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as LiveStudioRouteImport } from './routes/live-studio'
@@ -41,6 +42,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignRoute = CampaignRouteImport.update({
+  id: '/campaign',
+  path: '/campaign',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonorsRoute = DonorsRouteImport.update({
@@ -129,6 +135,7 @@ const TrainingModuleIdRoute = TrainingModuleIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -171,6 +179,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -193,6 +202,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -213,6 +223,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -256,6 +268,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  CampaignRoute: typeof CampaignRoute
   DonorsRoute: typeof DonorsRoute
   JobsRoute: typeof JobsRouteWithChildren
   LiveStudioRoute: typeof LiveStudioRoute
@@ -287,6 +300,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaign': {
+      id: '/campaign'
+      path: '/campaign'
+      fullPath: '/campaign'
+      preLoaderRoute: typeof CampaignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donors': {
@@ -451,6 +471,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  CampaignRoute: CampaignRoute,
   DonorsRoute: DonorsRoute,
   JobsRoute: JobsRouteWithChildren,
   LiveStudioRoute: LiveStudioRoute,
