@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CampaignRouteImport } from './routes/campaign'
 import { Route as DonorsRouteImport } from './routes/donors'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as LiveStudioRouteImport } from './routes/live-studio'
@@ -20,8 +21,10 @@ import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as ReelsRouteImport } from './routes/reels'
 import { Route as SmartstartRouteImport } from './routes/smartstart'
 import { Route as TrainingRouteImport } from './routes/training'
+import { Route as AuthenticatedCampaignToolsRouteImport } from './routes/_authenticated/campaign-tools'
 import { Route as AuthenticatedCertificatesRouteImport } from './routes/_authenticated/certificates'
 import { Route as AuthenticatedChatRouteImport } from './routes/_authenticated/chat'
+import { Route as AuthenticatedCoachRouteImport } from './routes/_authenticated/coach'
 import { Route as AuthenticatedControlRoomRouteImport } from './routes/_authenticated/control-room'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
 import { Route as AuthenticatedSessionsRouteImport } from './routes/_authenticated/sessions'
@@ -41,6 +44,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CampaignRoute = CampaignRouteImport.update({
+  id: '/campaign',
+  path: '/campaign',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DonorsRoute = DonorsRouteImport.update({
@@ -83,6 +91,12 @@ const TrainingRoute = TrainingRouteImport.update({
   path: '/training',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedCampaignToolsRoute =
+  AuthenticatedCampaignToolsRouteImport.update({
+    id: '/campaign-tools',
+    path: '/campaign-tools',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedCertificatesRoute =
   AuthenticatedCertificatesRouteImport.update({
     id: '/certificates',
@@ -92,6 +106,11 @@ const AuthenticatedCertificatesRoute =
 const AuthenticatedChatRoute = AuthenticatedChatRouteImport.update({
   id: '/chat',
   path: '/chat',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCoachRoute = AuthenticatedCoachRouteImport.update({
+  id: '/coach',
+  path: '/coach',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedControlRoomRoute =
@@ -129,6 +148,7 @@ const TrainingModuleIdRoute = TrainingModuleIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -137,8 +157,10 @@ export interface FileRoutesByFullPath {
   '/reels': typeof ReelsRoute
   '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
+  '/campaign-tools': typeof AuthenticatedCampaignToolsRoute
   '/certificates': typeof AuthenticatedCertificatesRoute
   '/chat': typeof AuthenticatedChatRoute
+  '/coach': typeof AuthenticatedCoachRoute
   '/control-room': typeof AuthenticatedControlRoomRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/sessions': typeof AuthenticatedSessionsRoute
@@ -149,6 +171,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -157,8 +180,10 @@ export interface FileRoutesByTo {
   '/reels': typeof ReelsRoute
   '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
+  '/campaign-tools': typeof AuthenticatedCampaignToolsRoute
   '/certificates': typeof AuthenticatedCertificatesRoute
   '/chat': typeof AuthenticatedChatRoute
+  '/coach': typeof AuthenticatedCoachRoute
   '/control-room': typeof AuthenticatedControlRoomRoute
   '/profile': typeof AuthenticatedProfileRoute
   '/sessions': typeof AuthenticatedSessionsRoute
@@ -171,6 +196,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/campaign': typeof CampaignRoute
   '/donors': typeof DonorsRoute
   '/jobs': typeof JobsRouteWithChildren
   '/live-studio': typeof LiveStudioRoute
@@ -179,8 +205,10 @@ export interface FileRoutesById {
   '/reels': typeof ReelsRoute
   '/smartstart': typeof SmartstartRoute
   '/training': typeof TrainingRouteWithChildren
+  '/_authenticated/campaign-tools': typeof AuthenticatedCampaignToolsRoute
   '/_authenticated/certificates': typeof AuthenticatedCertificatesRoute
   '/_authenticated/chat': typeof AuthenticatedChatRoute
+  '/_authenticated/coach': typeof AuthenticatedCoachRoute
   '/_authenticated/control-room': typeof AuthenticatedControlRoomRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
   '/_authenticated/sessions': typeof AuthenticatedSessionsRoute
@@ -193,6 +221,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -201,8 +230,10 @@ export interface FileRouteTypes {
     | '/reels'
     | '/smartstart'
     | '/training'
+    | '/campaign-tools'
     | '/certificates'
     | '/chat'
+    | '/coach'
     | '/control-room'
     | '/profile'
     | '/sessions'
@@ -213,6 +244,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -221,8 +253,10 @@ export interface FileRouteTypes {
     | '/reels'
     | '/smartstart'
     | '/training'
+    | '/campaign-tools'
     | '/certificates'
     | '/chat'
+    | '/coach'
     | '/control-room'
     | '/profile'
     | '/sessions'
@@ -234,6 +268,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/campaign'
     | '/donors'
     | '/jobs'
     | '/live-studio'
@@ -242,8 +277,10 @@ export interface FileRouteTypes {
     | '/reels'
     | '/smartstart'
     | '/training'
+    | '/_authenticated/campaign-tools'
     | '/_authenticated/certificates'
     | '/_authenticated/chat'
+    | '/_authenticated/coach'
     | '/_authenticated/control-room'
     | '/_authenticated/profile'
     | '/_authenticated/sessions'
@@ -256,6 +293,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  CampaignRoute: typeof CampaignRoute
   DonorsRoute: typeof DonorsRoute
   JobsRoute: typeof JobsRouteWithChildren
   LiveStudioRoute: typeof LiveStudioRoute
@@ -287,6 +325,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/campaign': {
+      id: '/campaign'
+      path: '/campaign'
+      fullPath: '/campaign'
+      preLoaderRoute: typeof CampaignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/donors': {
@@ -345,6 +390,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/campaign-tools': {
+      id: '/_authenticated/campaign-tools'
+      path: '/campaign-tools'
+      fullPath: '/campaign-tools'
+      preLoaderRoute: typeof AuthenticatedCampaignToolsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/certificates': {
       id: '/_authenticated/certificates'
       path: '/certificates'
@@ -357,6 +409,13 @@ declare module '@tanstack/react-router' {
       path: '/chat'
       fullPath: '/chat'
       preLoaderRoute: typeof AuthenticatedChatRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/coach': {
+      id: '/_authenticated/coach'
+      path: '/coach'
+      fullPath: '/coach'
+      preLoaderRoute: typeof AuthenticatedCoachRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/control-room': {
@@ -405,8 +464,10 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCampaignToolsRoute: typeof AuthenticatedCampaignToolsRoute
   AuthenticatedCertificatesRoute: typeof AuthenticatedCertificatesRoute
   AuthenticatedChatRoute: typeof AuthenticatedChatRoute
+  AuthenticatedCoachRoute: typeof AuthenticatedCoachRoute
   AuthenticatedControlRoomRoute: typeof AuthenticatedControlRoomRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedSessionsRoute: typeof AuthenticatedSessionsRoute
@@ -414,8 +475,10 @@ interface AuthenticatedRouteRouteChildren {
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCampaignToolsRoute: AuthenticatedCampaignToolsRoute,
   AuthenticatedCertificatesRoute: AuthenticatedCertificatesRoute,
   AuthenticatedChatRoute: AuthenticatedChatRoute,
+  AuthenticatedCoachRoute: AuthenticatedCoachRoute,
   AuthenticatedControlRoomRoute: AuthenticatedControlRoomRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedSessionsRoute: AuthenticatedSessionsRoute,
@@ -451,6 +514,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  CampaignRoute: CampaignRoute,
   DonorsRoute: DonorsRoute,
   JobsRoute: JobsRouteWithChildren,
   LiveStudioRoute: LiveStudioRoute,

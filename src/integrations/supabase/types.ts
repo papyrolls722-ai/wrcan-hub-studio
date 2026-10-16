@@ -52,6 +52,231 @@ export type Database = {
           },
         ]
       }
+      campaign_documents: {
+        Row: {
+          centre: string
+          created_at: string
+          doc_type: string
+          file_path: string | null
+          id: string
+          note: string | null
+          status: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          centre: string
+          created_at?: string
+          doc_type: string
+          file_path?: string | null
+          id?: string
+          note?: string | null
+          status: string
+          subject?: string
+          user_id?: string
+        }
+        Update: {
+          centre?: string
+          created_at?: string
+          doc_type?: string
+          file_path?: string | null
+          id?: string
+          note?: string | null
+          status?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      campaign_evidence: {
+        Row: {
+          after_at: string | null
+          after_path: string | null
+          before_at: string | null
+          before_path: string | null
+          category: string
+          centre: string
+          created_at: string
+          id: string
+          latitude: number | null
+          longitude: number | null
+          note: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          after_at?: string | null
+          after_path?: string | null
+          before_at?: string | null
+          before_path?: string | null
+          category?: string
+          centre: string
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          note?: string | null
+          title: string
+          user_id?: string
+        }
+        Update: {
+          after_at?: string | null
+          after_path?: string | null
+          before_at?: string | null
+          before_path?: string | null
+          category?: string
+          centre?: string
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          note?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      campaign_incidents: {
+        Row: {
+          category: string
+          centre: string
+          created_at: string
+          description: string
+          evidence_path: string | null
+          id: string
+          reporter_id: string
+          status: string
+        }
+        Insert: {
+          category: string
+          centre: string
+          created_at?: string
+          description: string
+          evidence_path?: string | null
+          id?: string
+          reporter_id?: string
+          status?: string
+        }
+        Update: {
+          category?: string
+          centre?: string
+          created_at?: string
+          description?: string
+          evidence_path?: string | null
+          id?: string
+          reporter_id?: string
+          status?: string
+        }
+        Relationships: []
+      }
+      campaign_milestones: {
+        Row: {
+          achieved: boolean
+          centre: string
+          child_ref: string
+          created_at: string
+          id: string
+          milestone: string
+          user_id: string
+        }
+        Insert: {
+          achieved?: boolean
+          centre: string
+          child_ref: string
+          created_at?: string
+          id?: string
+          milestone: string
+          user_id?: string
+        }
+        Update: {
+          achieved?: boolean
+          centre?: string
+          child_ref?: string
+          created_at?: string
+          id?: string
+          milestone?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      campaign_visits: {
+        Row: {
+          centre: string
+          department: string
+          id: string
+          latitude: number | null
+          longitude: number | null
+          official_name: string
+          photo_path: string | null
+          purpose: string | null
+          signature: string
+          user_id: string
+          visited_at: string
+        }
+        Insert: {
+          centre: string
+          department: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          official_name: string
+          photo_path?: string | null
+          purpose?: string | null
+          signature: string
+          user_id?: string
+          visited_at?: string
+        }
+        Update: {
+          centre?: string
+          department?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          official_name?: string
+          photo_path?: string | null
+          purpose?: string | null
+          signature?: string
+          user_id?: string
+          visited_at?: string
+        }
+        Relationships: []
+      }
+      campaign_voice_notes: {
+        Row: {
+          audio_path: string
+          centre: string
+          created_at: string
+          duration_ms: number | null
+          id: string
+          language: string
+          status: string
+          summary: string | null
+          user_id: string
+        }
+        Insert: {
+          audio_path: string
+          centre: string
+          created_at?: string
+          duration_ms?: number | null
+          id?: string
+          language?: string
+          status?: string
+          summary?: string | null
+          user_id?: string
+        }
+        Update: {
+          audio_path?: string
+          centre?: string
+          created_at?: string
+          duration_ms?: number | null
+          id?: string
+          language?: string
+          status?: string
+          summary?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       certificates: {
         Row: {
           certificate_number: string
@@ -1150,6 +1375,7 @@ export type Database = {
         Returns: string
       }
       auto_allocate_area: { Args: never; Returns: string }
+      campaign_public_stats: { Args: never; Returns: Json }
       can_view_control_room: { Args: never; Returns: boolean }
       certificate_directory: {
         Args: never
