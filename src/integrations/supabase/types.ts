@@ -653,6 +653,39 @@ export type Database = {
           },
         ]
       }
+      ecd_records: {
+        Row: {
+          centre: string
+          created_at: string
+          details: string
+          feature: string
+          id: string
+          status: string
+          subject: string
+          user_id: string
+        }
+        Insert: {
+          centre?: string
+          created_at?: string
+          details?: string
+          feature: string
+          id?: string
+          status?: string
+          subject: string
+          user_id?: string
+        }
+        Update: {
+          centre?: string
+          created_at?: string
+          details?: string
+          feature?: string
+          id?: string
+          status?: string
+          subject?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       enrollments: {
         Row: {
           completed_at: string | null
