@@ -31,6 +31,7 @@ import { Route as AuthenticatedSessionsRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedStatusRouteImport } from './routes/_authenticated/status'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
 import { Route as TrainingModuleIdRouteImport } from './routes/training.$moduleId'
+import { Route as AuthenticatedEcdFeatureRouteImport } from './routes/_authenticated/ecd.$feature'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -144,6 +145,11 @@ const TrainingModuleIdRoute = TrainingModuleIdRouteImport.update({
   path: '/$moduleId',
   getParentRoute: () => TrainingRoute,
 } as any)
+const AuthenticatedEcdFeatureRoute = AuthenticatedEcdFeatureRouteImport.update({
+  id: '/ecd/$feature',
+  path: '/ecd/$feature',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -167,6 +173,7 @@ export interface FileRoutesByFullPath {
   '/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
+  '/ecd/$feature': typeof AuthenticatedEcdFeatureRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -190,6 +197,7 @@ export interface FileRoutesByTo {
   '/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
+  '/ecd/$feature': typeof AuthenticatedEcdFeatureRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/_authenticated/status': typeof AuthenticatedStatusRoute
   '/jobs/$jobId': typeof JobsJobIdRoute
   '/training/$moduleId': typeof TrainingModuleIdRoute
+  '/_authenticated/ecd/$feature': typeof AuthenticatedEcdFeatureRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -240,6 +249,7 @@ export interface FileRouteTypes {
     | '/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
+    | '/ecd/$feature'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
+    | '/ecd/$feature'
   id:
     | '__root__'
     | '/'
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/_authenticated/status'
     | '/jobs/$jobId'
     | '/training/$moduleId'
+    | '/_authenticated/ecd/$feature'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -460,6 +472,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TrainingModuleIdRouteImport
       parentRoute: typeof TrainingRoute
     }
+    '/_authenticated/ecd/$feature': {
+      id: '/_authenticated/ecd/$feature'
+      path: '/ecd/$feature'
+      fullPath: '/ecd/$feature'
+      preLoaderRoute: typeof AuthenticatedEcdFeatureRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -472,6 +491,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
   AuthenticatedSessionsRoute: typeof AuthenticatedSessionsRoute
   AuthenticatedStatusRoute: typeof AuthenticatedStatusRoute
+  AuthenticatedEcdFeatureRoute: typeof AuthenticatedEcdFeatureRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -483,6 +503,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
   AuthenticatedSessionsRoute: AuthenticatedSessionsRoute,
   AuthenticatedStatusRoute: AuthenticatedStatusRoute,
+  AuthenticatedEcdFeatureRoute: AuthenticatedEcdFeatureRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

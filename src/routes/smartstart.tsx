@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowUpRight, BookOpen, MapPin, Radio, WifiOff, Users } from 'lucide-react';
 import { Shell } from '@/components/Shell';
+import { ECD_SECTIONS } from '@/lib/ecd';
 
 export const Route = createFileRoute('/smartstart')({ head: () => ({ meta: [
   { title: 'SmartStart — WRCAN Hub' }, { name: 'description', content: 'Access WRCAN learning, live training sessions, field attendance and saved lessons from SmartStart.' },
@@ -17,6 +18,8 @@ function SmartStart() {
       { to: '/media-studio', title: 'Interactive classroom', text: 'Small-group video training', icon: Users },
       { to: '/chat', title: 'Community', text: 'Connect with your WRCAN groups', icon: MapPin },
     ].map(({ to, title, text, icon: Icon }) => <Link key={to} to={to} className="flex gap-4 items-center py-5"><Icon className="size-6 shrink-0 text-primary" /><div className="min-w-0 flex-1"><h3 className="font-display text-xl">{title}</h3><p className="text-xs text-muted-foreground mt-1">{text}</p></div><ArrowUpRight className="size-4 shrink-0 text-primary" /></Link>)}</div>
+    <div className="mt-8 border-t border-border pt-6"><h2 className="font-display text-2xl text-primary">DBE & SmartStart ECD Compliance</h2><p className="mt-1 text-xs text-muted-foreground">Child development, social work, health, DBE compliance, government reporting and parent community tools.</p></div>
+    {ECD_SECTIONS.map((s, i) => <div key={s.title} className="mt-5"><h3 className="mb-1 text-xs font-semibold tracking-widest text-muted-foreground uppercase">{i + 1}. {s.title}</h3><div className="divide-y divide-border rounded-xl border border-border">{s.features.map((f) => <Link key={f.key} to="/ecd/$feature" params={{ feature: f.key }} className="flex items-center gap-3 px-3 py-3"><span className="flex-1 text-sm">{f.title}</span><ArrowUpRight className="size-4 text-primary" /></Link>)}</div></div>)}
     <p className="mt-6 text-xs text-muted-foreground">This workspace contains WRCAN resources. Official SmartStart partner tools or materials have not been connected.</p>
   </Shell>;
 }
