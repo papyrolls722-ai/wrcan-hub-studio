@@ -14,6 +14,7 @@ import {
 
 import { Medallion } from "@/components/Medallion";
 import { Shell } from "@/components/Shell";
+import { SmartStartButton } from "@/components/SmartStartButton";
 import { UatPanel } from "@/components/UatPanel";
 import { RoseButton } from "@/components/EmpireUI";
 import { useControlAccess } from "@/hooks/useBadges";
@@ -84,9 +85,9 @@ function Index() {
       ) : null}
 
       <div className="grid grid-cols-2 gap-x-4 gap-y-6 pb-6">
-        {tiles.map((t) => (
-          <Medallion key={t.label} {...t} />
-        ))}
+        {tiles.map((t) =>
+          t.to === "/smartstart" ? <SmartStartButton key={t.label} /> : <Medallion key={t.label} {...t} />,
+        )}
       </div>
 
       <UatPanel />
