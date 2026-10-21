@@ -239,7 +239,7 @@ export function InfrastructureAudit() {
                 {AGE_GROUPS.map((g, i) => (
                   <label key={g} className="text-xs text-muted-foreground">
                     {g}
-                    <input className={`${input} mt-0.5`} inputMode="numeric" value={reg.ages[i]} onChange={num(reg.ages[i], (v) => setReg({ ...reg, ages: reg.ages.map((a, j) => (j === i ? v : a)) }))} />
+                    <input className={`${input} mt-0.5`} inputMode="numeric" value={reg.ages[i] ?? ""} onChange={num(reg.ages[i] ?? "", (v) => setReg({ ...reg, ages: reg.ages.map((a, j) => (j === i ? v : a)) }))} />
                   </label>
                 ))}
               </div>
