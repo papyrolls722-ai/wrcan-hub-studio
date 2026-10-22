@@ -9,3 +9,5 @@
 - [ ] Verify new flows, permissions, and offline behavior.
 - [x] Connect the infrastructure audit to SmartStart and its existing audit page.
 - [x] Verify infrastructure calculations, photo evidence, saving and saved audit review.
+- [ ] Add SmartStart camera attendance with teacher/child modes and local logs.
+- [ ] Test attendance capture, camera errors and persistence.

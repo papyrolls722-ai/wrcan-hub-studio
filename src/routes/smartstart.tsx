@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { ArrowUpRight, BookOpen, MapPin, Radio, WifiOff, Users } from 'lucide-react';
+import { ArrowUpRight, BookOpen, MapPin, Radio, WifiOff, Users, Camera } from 'lucide-react';
 import { Shell } from '@/components/Shell';
 import { ECD_SECTIONS } from '@/lib/ecd';
 
@@ -12,6 +12,7 @@ function SmartStart() {
   return <Shell title="SmartStart" subtitle="Learning · People · Opportunity">
     <div className="border-y border-border py-6 mb-4"><h2 className="font-display text-3xl text-primary">Your next step starts here.</h2><p className="mt-3 text-sm text-muted-foreground">WRCAN learning and community workspace.</p></div>
     <div className="divide-y divide-border">{[
+      { to: '/attendance', title: 'ECD Attendance', text: 'Teacher & child daily register', icon: Camera },
       { to: '/training', title: 'Training modules', text: 'Browse the WRCAN training catalogue', icon: BookOpen },
       { to: '/sessions', title: 'Live training & field sessions', text: 'Join a broadcast or share session attendance', icon: Radio },
       { to: '/offline', title: 'Saved learning', text: 'Your saved lessons and personal drafts', icon: WifiOff },
