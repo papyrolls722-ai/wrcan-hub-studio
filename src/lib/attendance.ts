@@ -14,6 +14,6 @@ export function parseAttendance(raw: string | null): AttendanceEntry[] {
   return data.filter((entry): entry is AttendanceEntry => {
     if (!entry || typeof entry !== "object") return false;
     const e = entry as Record<string, unknown>;
-    return typeof e.id === "string" && typeof e.name === "string" && (e.role === "Teacher" || e.role === "Child") && (e.action === "In" || e.action === "Out") && typeof e.timestamp === "string" && Number.isFinite(Date.parse(e.timestamp)) && typeof e.photo === "string" && e.photo.startsWith("data:image/jpeg;base64,");
+    return typeof e['id'] === "string" && typeof e['name'] === "string" && (e['role'] === "Teacher" || e['role'] === "Child") && (e['action'] === "In" || e['action'] === "Out") && typeof e['timestamp'] === "string" && Number.isFinite(Date.parse(e['timestamp'])) && typeof e['photo'] === "string" && e['photo'].startsWith("data:image/jpeg;base64,");
   });
 }

@@ -19,7 +19,7 @@ export const Route = createFileRoute("/attendance")({
 
 function AttendancePage() {
   const [role, setRole] = useState<AttendanceRole>("Teacher");
-  const [selected, setSelected] = useState(PROFILES.Teacher[0].id);
+  const [selected, setSelected] = useState(PROFILES.Teacher[0]?.id ?? "");
   const [entries, setEntries] = useState<AttendanceEntry[]>([]);
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -101,7 +101,7 @@ function AttendancePage() {
     </div></header>
     <main className="mx-auto max-w-5xl px-5 py-8">
       <div className="mb-7 flex items-center gap-4"><div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-secondary text-secondary-foreground"><Users className="size-6" /></div><div><h1 className="font-sans text-3xl font-bold">ECD Attendance</h1><p className="mt-1 text-sm text-muted-foreground">SmartStart · Daily register</p></div></div>
-      <Tabs value={role} onValueChange={value => { if (busy) return; const next = value as AttendanceRole; setRole(next); setSelected(PROFILES[next][0].id); setNotice(null); }}>
+      <Tabs value={role} onValueChange={value => { if (busy) return; const next = value as AttendanceRole; setRole(next); setSelected(PROFILES[next][0]?.id ?? ""); setNotice(null); }}>
         <TabsList className="mb-7 grid h-12 w-full max-w-md grid-cols-2"><TabsTrigger disabled={busy} value="Teacher" className="h-full gap-2"><GraduationCap className="size-4" /> Teacher Mode</TabsTrigger><TabsTrigger disabled={busy} value="Child" className="h-full gap-2"><Users className="size-4" /> Child Mode</TabsTrigger></TabsList>
       </Tabs>
       <div className="grid gap-7 md:grid-cols-[1fr_1.2fr]">
