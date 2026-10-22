@@ -235,3 +235,27 @@
   color: var(--smartstart-ink);
   text-shadow: 0 1px 0 oklch(1 0 0 / 0.18), 0 -1px 0 oklch(0 0 0 / 0.35);
 }
+
+/* Attendance is a bright, calm workspace, scoped independently of Empire pages. */
+.attendance-theme {
+  --background: oklch(0.98 0.009 80);
+  --foreground: oklch(0.28 0.025 160);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(0.43 0.085 165);
+  --primary-foreground: oklch(0.99 0.005 160);
+  --secondary: oklch(0.91 0.065 75);
+  --secondary-foreground: oklch(0.34 0.055 55);
+  --muted: oklch(0.94 0.015 150);
+  --muted-foreground: oklch(0.49 0.025 160);
+  --accent: oklch(0.92 0.035 160);
+  --accent-foreground: var(--foreground);
+  --border: oklch(0.87 0.018 150);
+  --input: var(--border);
+  --ring: var(--primary);
+  --destructive: oklch(0.49 0.18 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  color: var(--foreground);
+}
