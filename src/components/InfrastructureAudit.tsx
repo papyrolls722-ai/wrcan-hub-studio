@@ -63,7 +63,7 @@ function PhotoSlots({ section, photos, onUpload, busy }: { section: string; phot
             <Camera className="size-4" />
             {evidence ? <EvidenceImage evidence={evidence} label={p.label} /> : null}
             <span>{p.label}</span>
-            <span className="text-[0.6rem]">{busy === key ? "Uploading…" : done ? (evidence.latitude !== null && evidence.longitude !== null ? "Photo saved · GPS & date recorded" : "Photo saved · date recorded, GPS unavailable") : "Add photo"}</span>
+            <span className="text-[0.6rem]">{busy === key ? "Uploading…" : evidence ? (evidence.latitude !== null && evidence.longitude !== null ? "Photo saved · GPS & date recorded" : "Photo saved · date recorded, GPS unavailable") : "Add photo"}</span>
             <input aria-label={p.label} type="file" accept="image/*" capture="environment" className="hidden" disabled={busy !== null}
               onChange={(e) => { const f = e.target.files?.[0]; if (f) onUpload(key, f); e.target.value = ""; }} />
           </label>
