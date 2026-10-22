@@ -5,10 +5,11 @@ import { Shell } from "@/components/Shell";
 import { supabase } from "@/integrations/supabase/client";
 import { findEcdFeature } from "@/lib/ecd";
 import { downloadCsv } from "@/lib/csv";
+import { InfrastructureAudit } from "@/components/InfrastructureAudit";
 
 export const Route = createFileRoute("/_authenticated/ecd/$feature")({
-  head: () => ({ meta: [
-    { title: "ECD Compliance Record — SmartStart" },
+  head: ({ params }) => ({ meta: [
+    { title: params.feature === "infrastructure" ? "WR Care Infrastructure Audit — SmartStart" : "ECD Compliance Record — SmartStart" },
     { name: "description", content: "Capture and track ECD compliance records for SmartStart centres." },
     { property: "og:title", content: "ECD Compliance Record — SmartStart" },
     { property: "og:description", content: "DBE & SmartStart ECD compliance records." },
@@ -22,6 +23,11 @@ const STATUSES = ["open", "in_progress", "done", "flagged"] as const;
 
 function FeaturePage() {
   const { feature } = Route.useParams();
+  if (feature === "infrastructure") return <Shell title="WR Care Infrastructure Audit" subtitle="DBE · Bana Pele / Registration"><Link to="/smartstart" className="mb-4 inline-flex items-center gap-1 text-xs text-primary"><ArrowLeft className="size-3" /> SmartStart</Link><InfrastructureAudit /></Shell>;
+  return <RecordPage feature={feature} />;
+}
+
+function RecordPage({ feature }: { feature: string }) {
   const f = findEcdFeature(feature);
   const [rows, setRows] = useState<Row[]>([]);
   const [form, setForm] = useState({ centre: "", subject: "", details: "", status: "open" });

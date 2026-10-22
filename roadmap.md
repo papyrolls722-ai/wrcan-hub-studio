@@ -7,3 +7,5 @@
 - [ ] Add offline saved modules and draft access to the installable app.
 - [ ] Add an internal SmartStart hub and home-page button.
 - [ ] Verify new flows, permissions, and offline behavior.
+- [x] Connect the infrastructure audit to SmartStart and its existing audit page.
+- [x] Verify infrastructure calculations, photo evidence, saving and saved audit review.
