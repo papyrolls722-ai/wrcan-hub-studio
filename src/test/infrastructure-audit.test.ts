@@ -7,9 +7,18 @@ import {
   staffToiletsRequired,
   SQM_PER_CHILD_INDOOR,
   SQM_PER_CHILD_OUTDOOR,
+  AUDIT_SECTIONS,
 } from "@/lib/infrastructure-audit";
 
 describe("infrastructure audit rules", () => {
+  it("includes the eight required infrastructure audit sections", () => {
+    expect(AUDIT_SECTIONS.map((section) => section.key)).toEqual(["building", "size", "toilets", "kitchen", "safety", "water", "zoning", "bangasali"]);
+  });
+
+  it("requires inside photo slots for all four building sides", () => {
+    expect(AUDIT_SECTIONS.find((section) => section.key === "building")?.photos.map((photo) => photo.key)).toEqual(["side_front", "side_back", "side_left", "side_right"]);
+  });
+
   it("computes area as length × width", () => {
     expect(areaSqm(6, 5)).toBe(30);
   });
