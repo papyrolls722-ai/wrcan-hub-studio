@@ -15,6 +15,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { PresenceProvider } from "@/hooks/usePresence";
 import { Toaster } from "@/components/ui/sonner";
 import { BootScreen } from "@/components/BootScreen";
+import { DataFreeBanner } from "@/components/DataFreeBanner";
 import { InstallPrompt } from "@/components/InstallPrompt";
 import { NotificationBalloons } from "@/components/NotificationBalloons";
 
@@ -140,11 +141,12 @@ function RootComponent() {
       <AuthProvider>
         <PresenceProvider>
           <BootScreen />
+          <DataFreeBanner />
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
           <InstallPrompt />
           <NotificationBalloons />
-          <Toaster position="top-center" richColors />
+          <Toaster position="top-center" richColors offset={104} />
         </PresenceProvider>
       </AuthProvider>
 

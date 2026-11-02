@@ -10,4 +10,4 @@
 - [x] Connect the infrastructure audit to SmartStart and its existing audit page.
 - [x] Verify infrastructure calculations, photo evidence, saving and saved audit review.
 - [ ] Add SmartStart camera attendance with teacher/child modes and local logs.
-- [ ] Test attendance capture, camera errors and persistence.
+- [ ] Test attendance capture, camera errors and persistence.- [x] Add a global data-free mode banner with toggle, data warning and zero-rated shield.
