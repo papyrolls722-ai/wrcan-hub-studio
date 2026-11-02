@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ShieldAlert, ShieldCheck, ShieldOff, X } from "lucide-react";
 
-import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 import {
   CARRIERS,
@@ -99,12 +98,25 @@ export function DataFreeBanner() {
           >
             {on ? "On" : "Off"}
           </span>
-          <Switch
-            checked={on}
-            onCheckedChange={handleToggle}
+          <button
+            type="button"
+            role="switch"
+            aria-checked={on}
             aria-label="Toggle data-free mode"
-            className={on ? "zero-rated-switch" : undefined}
-          />
+            onClick={() => handleToggle(!on)}
+            className={cn(
+              "relative h-6 w-11 shrink-0 rounded-full border transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+              on ? "zero-rated-track" : "datafree-warn-track",
+            )}
+          >
+            <span
+              className={cn(
+                "absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full transition-all duration-200",
+                on ? "left-6 zero-rated-knob" : "left-1 datafree-warn-knob",
+              )}
+              aria-hidden
+            />
+          </button>
         </div>
       </div>
 

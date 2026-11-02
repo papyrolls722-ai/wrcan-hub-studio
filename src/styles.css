@@ -368,3 +368,22 @@
     animation: none;
   }
 }
+
+@utility zero-rated-track {
+  border-color: var(--zero-rated-line);
+  background-color: oklch(0.78 0.17 155 / 0.32);
+}
+
+@utility zero-rated-knob {
+  background-color: var(--zero-rated);
+  box-shadow: 0 0 8px oklch(0.78 0.17 155 / 0.6);
+}
+
+@utility datafree-warn-track {
+  border-color: var(--data-free-warn-line);
+  background-color: oklch(0.82 0.14 78 / 0.16);
+}
+
+@utility datafree-warn-knob {
+  background-color: oklch(0.92 0.03 80);
+}
