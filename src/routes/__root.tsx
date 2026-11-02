@@ -140,13 +140,13 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <PresenceProvider>
-        <BootScreen />
-        <DataFreeBanner />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <InstallPrompt />
-        <NotificationBalloons />
-        <Toaster position="top-center" richColors offset={104} />
+          <BootScreen />
+          <DataFreeBanner />
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <InstallPrompt />
+          <NotificationBalloons />
+          <Toaster position="top-center" richColors offset={104} />
         </PresenceProvider>
       </AuthProvider>
 
